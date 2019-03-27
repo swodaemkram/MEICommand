@@ -11,7 +11,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "print_help.h"
+
+
+
 int main(void) {
-	puts("MEICommand"); /* prints MEICommand */
-	return EXIT_SUCCESS;
+
+	print_help();
+
+
+	exit(0);
+
 }
