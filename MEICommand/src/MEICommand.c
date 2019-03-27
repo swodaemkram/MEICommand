@@ -4,7 +4,7 @@
  Author      : Mark Meadows
  Version     :
  Copyright   : Fireking Security Group
- Description : Hello World in C, Ansi-style
+ Description : MEICommand in C, Ansi-style
  ============================================================================
  */
 
