@@ -17,6 +17,7 @@ void print_help(){
 	printf("               For the MEI scnx16627RUS Bill Validator\n");
 	printf("                       Written By Mark Meadows\n");
 	printf("     (c)Copyright 2019 FireKing Security Group All rights reserved\n");
+	printf("                              Ver 00.00.27            \n");
 	printf("           this program requires root or sudo system access\n");
 	printf("\n");
 	printf(" Available Commands are as follows:\n\n");

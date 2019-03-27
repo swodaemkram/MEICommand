@@ -11,10 +11,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <termios.h>
+#include <unistd.h>
 
 #include "print_help.h"
 #include "mei_Constants.h"
 #include "do_crc.h"
+#include "setup_serial_port.h"
+#include "build_packet.h"
+
+
+
+
 
 int main(int argc, char *argv[]) {
 
@@ -119,28 +129,33 @@ Figure out what the command byte should be
 			printf("\nThis Feature not Implemented Yet...\n");
 			exit(0);
 	}
-
 /*
 =====================================================================================
 Finished getting the command Byte
 =====================================================================================
+Setup Serial Port
+=====================================================================================
  */
+	setup_serial_port(comm_port);
+/*
+=====================================================================================
+Serial Port is Setup
+=====================================================================================
+Lets Build The Packet to be transmitted
+=====================================================================================
+ */
+	char *pkt = {0};
+
+	pkt = build_packet(pkt_command);
 
 
 
-	printf("\n%s\n",comm_port);
-	printf("\n%s\n",command);
-	printf("\n\%02x\n",pkt_command[1]);
+
+
+
+
+
 	exit(0);
-
-
-
-
-
-
-
-
-
 
 	print_help();
 	exit(0);
