@@ -12,8 +12,8 @@
 #include <stdlib.h>
 
 #include "print_help.h"
-
-
+#include "mei_Constants.h"
+#include "do_crc.h"
 
 int main(void) {
 
