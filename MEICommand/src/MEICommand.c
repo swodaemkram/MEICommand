@@ -22,6 +22,8 @@
 #include "setup_serial_port.h"
 #include "build_packet.h"
 
+
+
 int main(int argc, char *argv[]) {
 
 //char pkt_command[1];
@@ -132,7 +134,7 @@ Finished getting the command Byte
 =====================================================================================
 Setup Serial Port
 =====================================================================================
- */
+*/
 	setup_serial_port(comm_port);
 /*
 =====================================================================================
@@ -141,9 +143,11 @@ Serial Port is Setup
 Lets Build The Packet to be transmitted
 =====================================================================================
  */
-	char *pkt;
-	pkt = build_packet(pkt_command);
+ int pkt;
 
+ pkt = build_packet(pkt_command);
+
+ printf("\n!%d!\n",pkt);
 
 	//printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 
@@ -151,11 +155,12 @@ Lets Build The Packet to be transmitted
 =====================================================================================
 Finished Building Packet
 =====================================================================================
+Send Packet to MEI unit
+=====================================================================================
  */
 
 
-
-
+	sleep(1);
 
 
 
