@@ -22,13 +22,10 @@
 #include "setup_serial_port.h"
 #include "build_packet.h"
 
-
-
-
-
 int main(int argc, char *argv[]) {
 
-char pkt_command[1];
+//char pkt_command[1];
+unsigned int pkt_command = 0;
 char comm_port[250] = {0}; //Define comm port variable
 char command[15] = {0};     //Define command variable
 
@@ -54,35 +51,35 @@ Figure out what the command byte should be
 ====================================================================================
 */
 	if (strcmp(command,"MEI_GETMODEL" )== 0 ){
-		   pkt_command[1] = MEI_GETMODEL;
+	   pkt_command = MEI_GETMODEL;
 	}
 
 	if (strcmp(command,"MEI_GETSERIAL" )== 0 ){
-			pkt_command[1] = MEI_GETSERIAL;
+		pkt_command = MEI_GETSERIAL;
 	}
 
 	if (strcmp(command,"MEI_GETBOOTVER" )== 0 ){
-			pkt_command[1] = MEI_GETBOOTVER;
+		pkt_command = MEI_GETBOOTVER;
 	}
 
 	if (strcmp(command,"MEI_GETAPPVER" )== 0 ){
-			pkt_command[1] = MEI_GETAPPVER;
+		pkt_command = MEI_GETAPPVER;
 	}
 
 	if (strcmp(command,"MEI_GETVARNAME" )== 0 ){
-			pkt_command[1] = MEI_GETVARNAME;
+		pkt_command = MEI_GETVARNAME;
 	}
 
 	if (strcmp(command,"MEI_GETQP" )== 0 ){
-			pkt_command[1] = MEI_GETQP;
+		pkt_command = MEI_GETQP;
 	}
 
 	if (strcmp(command,"MEI_GETPERF" )== 0 ){
-			pkt_command[1] = MEI_GETPERF;
+		pkt_command = MEI_GETPERF;
 	}
 
 	if (strcmp(command,"MEI_GETBNF" )== 0 ){
-			pkt_command[1] = MEI_GETBNF;
+		pkt_command = MEI_GETBNF;
 	}
 
 	if (strcmp(command,"MEI_POLL" )== 0 ){
@@ -144,9 +141,25 @@ Serial Port is Setup
 Lets Build The Packet to be transmitted
 =====================================================================================
  */
-	char *pkt = {0};
-
+	char *pkt;
 	pkt = build_packet(pkt_command);
+
+
+	//printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
+
+/*
+=====================================================================================
+Finished Building Packet
+=====================================================================================
+ */
+
+
+
+
+
+
+
+
 
 
 
