@@ -15,7 +15,7 @@ void setup_serial_port(char *comm_port){
 
 
 
-	printf("\n%s\n",comm_port);
+	//printf("\n%s\n",comm_port);
 
 	int set_interface_attribs(int fd, int speed)
 	{
@@ -68,7 +68,7 @@ void setup_serial_port(char *comm_port){
 
 
 
-	printf("\nSerial Port is Setup....\n");
+	//printf("\nSerial Port is Setup....\n");
 
 	return;
 }

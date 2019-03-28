@@ -147,7 +147,7 @@ Lets Build The Packet to be transmitted
 
  pkt = build_packet(pkt_command);
 
- printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
+ //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 
 /*
 =====================================================================================
@@ -157,15 +157,10 @@ Send Packet to MEI unit
 =====================================================================================
  */
 
+ send_pkt(comm_port,pkt); //send the bloody packet
 
 
 
-
-
-
-
-
-	sleep(1);
 	exit(0);
 	print_help();
 	exit(0);
