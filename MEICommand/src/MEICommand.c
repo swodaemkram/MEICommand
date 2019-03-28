@@ -74,7 +74,9 @@ Figure out what the command byte should be
 	}
 
 	if (strcmp(command,"MEI_GETQP" )== 0 ){
-		pkt_command = MEI_GETQP;
+		//pkt_command = MEI_GETQP;
+		printf("\nThis Feature not Implemented Yet...\n");
+		exit(0);
 	}
 
 	if (strcmp(command,"MEI_GETPERF" )== 0 ){

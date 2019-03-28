@@ -94,7 +94,7 @@ do {
        while(i <= rdlen){
        //printf("%d",buf[i]);
        if (buf[i] == '\x03'){ //Look for the End of Transmission Character and stop
-    	   printf("\n%s\n",output);
+    	   printf("\nMEI Returned --->%s\n\n",output);
     	   return;
        }
 
