@@ -98,15 +98,13 @@ do {
     	   exit(0);
        }
 
-        if (buf[i] >= 48 && buf[i] <= 122 ){
+        if (buf[i] >= 48 && buf[i] <= 122 ){ //Block as many non-printable characters as we can
        	   	   	   	   output[q] = buf[i];
            	   		   //printf("%d\n",output[q]);
            	   		   q++;
        }
        i++;
        }
-
-
 
        //printf("%s",  buf);
        //printf("\n");
