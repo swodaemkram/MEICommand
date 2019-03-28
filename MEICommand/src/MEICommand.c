@@ -16,13 +16,13 @@
 #include <termios.h>
 #include <unistd.h>
 
+#include "ack_message_send.h"
 #include "print_help.h"
 #include "mei_Constants.h"
 #include "do_crc.h"
 #include "setup_serial_port.h"
 #include "build_packet.h"
 #include "send_pkt.h"
-#include "ack_message.h"
 
 int main(int argc, char *argv[]) {
 
@@ -158,12 +158,26 @@ Send Packet to MEI unit
 =====================================================================================
 Packet Sent now we need to ACK the packet
 =====================================================================================
+We Need to Build and ACK Packet
+=====================================================================================
+*/
+ ack_packet_build(pkt_command);
+
+ /*
+======================================================================================
+Finished Building ACK Packet
+======================================================================================
+Now lets send it
+======================================================================================
+  */
+
+ ack_message_send(comm_port,pkt);
+
+/*
+=====================================================================================
+Finished Sending ACK
+=====================================================================================
  */
-
-
-
-
-
 	exit(0);
 	print_help();
 	exit(0);
