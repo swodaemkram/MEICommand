@@ -65,65 +65,70 @@
 Ready to transmit
 ---------------------------------------------------------------------------------------------------------------------
  */
-		     //set_mincount(fd, 0);                /* set to pure timed read */
+		    // set_mincount(fd, 0);                /* set to pure timed read */
+/*
+======================================================================================================================
+Transmit
+======================================================================================================================
+*/
+write(fd,pkt,sizeof(pkt));
+tcdrain(fd);    /* delay for output */
+/*
+======================================================================================================================
+Receive
+======================================================================================================================
+*/
+
+ char output[80];
+int q = 0;
+
+do {
+    unsigned char buf[80];
+    int rdlen;
+
+    rdlen = read(fd, buf, sizeof(buf) - 1);
+    if (rdlen > 0) {
+
+       //DISPLAY_STRING
+       int i = 0;
+       while(i <= rdlen){
+       //printf("%d",buf[i]);
+       if (buf[i] == '\x03'){ //Look for the End of Transmission Character and stop
+    	   printf("\n%s\n",output);
+    	   exit(0);
+       }
+
+        if (buf[i] >= 48 && buf[i] <= 122 ){
+       	   	   	   	   output[q] = buf[i];
+           	   		   //printf("%d\n",output[q]);
+           	   		   q++;
+       }
+       i++;
+       }
 
 
-		    write(fd,pkt,sizeof(pkt));
 
-		        tcdrain(fd);    /* delay for output */
+       //printf("%s",  buf);
+       //printf("\n");
+       buf[rdlen] = 0;
+       i = 0;
+        //display hex
+        //unsigned char   *p;
+        //printf("Read %d:", rdlen);
+        //for (p = buf; rdlen-- > 0; p++)
+        //    printf(" 0x%x", *p);
+       // printf("\n");
 
-
-		        /* simple noncanonical input */
-		        do {
-		            unsigned char buf[80];
-		            int rdlen;
-
-		            rdlen = read(fd, buf, sizeof(buf) - 1);
-		            if (rdlen > 0) {
-
-		    //#ifdef DISPLAY_STRING
-		               buf[rdlen] = 0;
-		               printf("Read %d: \"%s\"\n", rdlen, buf);
-		    //#else /* display hex */
-		               unsigned char   *p;
-		               printf("Read %d:", rdlen);
-		               for (p = buf; rdlen-- > 0; p++)
-		               printf(" 0x%x", *p);
-		               printf("\n");
-		    //#endif
-		            } else if (rdlen < 0) {
-		               // printf("Error from read: %d: %s\n", rdlen, strerror(errno));
-		            } else {  /* rdlen == 0 */
-		                printf("Timeout from read\n");
-		            }
-		            /* repeat read to get full message */
-		        } while (1);
-
-		    }
+    } else if (rdlen < 0) {
+        printf("Error from read: %d: %s\n", rdlen, strerror(errno));
+    } else {  /* rdlen == 0 */
+        printf("Timeout from read\n");
+    }
 
 
-
-
-void set_mincount(int fd, int mcount)
-		    {
-		        struct termios tty;
-
-		        if (tcgetattr(fd, &tty) < 0) {
-		            printf("Error tcgetattr: %s\n", strerror(errno));
-		            return;
-		        }
-
-		        tty.c_cc[VMIN] = mcount ? 1 : 0;
-		        tty.c_cc[VTIME] = 10;        /* half second timer */
-
-		        if (tcsetattr(fd, TCSANOW, &tty) < 0){
-
-
-		            printf("Error : \n");
-		    }
-
-
+} while (1);
 
 return;
 
-}
+ }
+
