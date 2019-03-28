@@ -21,7 +21,7 @@
 #include "do_crc.h"
 #include "setup_serial_port.h"
 #include "build_packet.h"
-
+#include "send_pkt.h"
 
 
 int main(int argc, char *argv[]) {
@@ -147,9 +147,7 @@ Lets Build The Packet to be transmitted
 
  pkt = build_packet(pkt_command);
 
-
-
-	printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
+ printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 
 /*
 =====================================================================================
@@ -160,17 +158,15 @@ Send Packet to MEI unit
  */
 
 
+
+
+
+
+
+
+
 	sleep(1);
-
-
-
-
-
-
-
-
 	exit(0);
-
 	print_help();
 	exit(0);
 
