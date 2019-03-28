@@ -23,6 +23,7 @@
 #include "setup_serial_port.h"
 #include "build_packet.h"
 #include "send_pkt.h"
+#include "ack_packet_build.h"
 
 int main(int argc, char *argv[]) {
 
@@ -161,7 +162,8 @@ Packet Sent now we need to ACK the packet
 We Need to Build and ACK Packet
 =====================================================================================
 */
- ack_packet_build(pkt_command);
+ char * ack_pkt;
+ ack_pkt = ack_packet_build(pkt_command);
 
  /*
 ======================================================================================
@@ -171,7 +173,7 @@ Now lets send it
 ======================================================================================
   */
 
- ack_message_send(comm_port,pkt);
+ ack_message_send(comm_port,ack_pkt);
 
 /*
 =====================================================================================

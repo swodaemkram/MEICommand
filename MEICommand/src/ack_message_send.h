@@ -12,7 +12,7 @@
 
 #endif /* ACK_MESSAGE_H_ */
 
-void ack_message(char *comm_port,char *pkt){
+void ack_message_send(char *comm_port,char *ack_pkt){
 
 	int set_interface_attribs(int fd, int speed)
 			{
@@ -73,9 +73,8 @@ void ack_message(char *comm_port,char *pkt){
 	======================================================================================================================
 	*/
 
-	pkt[3] = "\x01";
 
-	write(fd,pkt,sizeof(pkt));
+	write(fd,ack_pkt,sizeof(ack_pkt));
 	tcdrain(fd);    /* delay for output */
 
 
