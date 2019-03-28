@@ -95,7 +95,7 @@ do {
        //printf("%d",buf[i]);
        if (buf[i] == '\x03'){ //Look for the End of Transmission Character and stop
     	   printf("\n%s\n",output);
-    	   exit(0);
+    	   return;
        }
 
         if (buf[i] >= 48 && buf[i] <= 122 ){ //Block as many non-printable characters as we can
@@ -115,7 +115,7 @@ do {
         //printf("Read %d:", rdlen);
         //for (p = buf; rdlen-- > 0; p++)
         //    printf(" 0x%x", *p);
-       // printf("\n");
+        // printf("\n");
 
     } else if (rdlen < 0) {
         printf("Error from read: %d: %s\n", rdlen, strerror(errno));
