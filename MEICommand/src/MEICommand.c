@@ -22,7 +22,7 @@
 #include "setup_serial_port.h"
 #include "build_packet.h"
 #include "send_pkt.h"
-
+#include "ack_message.h"
 
 int main(int argc, char *argv[]) {
 
@@ -144,11 +144,8 @@ Lets Build The Packet to be transmitted
 =====================================================================================
  */
  char * pkt;
-
  pkt = build_packet(pkt_command);
-
  //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
-
 /*
 =====================================================================================
 Finished Building Packet
@@ -156,8 +153,14 @@ Finished Building Packet
 Send Packet to MEI unit
 =====================================================================================
  */
-
  send_pkt(comm_port,pkt); //send the bloody packet
+/*
+=====================================================================================
+Packet Sent now we need to ACK the packet
+=====================================================================================
+ */
+
+
 
 
 
