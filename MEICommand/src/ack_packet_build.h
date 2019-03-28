@@ -14,7 +14,7 @@
 
 char * ack_packet_build(unsigned int pkt_command){
 
-	static char ack_pkt[30] = "\x02\x08\x01\x00\x00\x00\x03"; //packet Skeleton
+	static char ack_pkt[30] = "\x02\x08\x01\x00\x00\x00\x03"; //packet Skeleton for Ack
 		ack_pkt[5] = pkt_command;						   //Pop command into packet Skeleton
 		int ack_pkt_length = 8;	               //Get packet size
 		unsigned int crc_val;

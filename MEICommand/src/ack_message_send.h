@@ -8,8 +8,6 @@
 #ifndef ACK_MESSAGE_H_
 #define ACK_MESSAGE_H_
 
-
-
 #endif /* ACK_MESSAGE_H_ */
 
 void ack_message_send(char *comm_port,char *ack_pkt){
@@ -72,16 +70,7 @@ void ack_message_send(char *comm_port,char *ack_pkt){
 	Transmit
 	======================================================================================================================
 	*/
-
-
 	write(fd,ack_pkt,sizeof(ack_pkt));
 	tcdrain(fd);    /* delay for output */
-
-
-
-
-
-
-
 	return;
 }
