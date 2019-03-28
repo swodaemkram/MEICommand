@@ -143,13 +143,13 @@ Serial Port is Setup
 Lets Build The Packet to be transmitted
 =====================================================================================
  */
- int pkt;
+ char * pkt;
 
  pkt = build_packet(pkt_command);
 
- printf("\n!%d!\n",pkt);
 
-	//printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
+
+	printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 
 /*
 =====================================================================================
@@ -161,10 +161,6 @@ Send Packet to MEI unit
 
 
 	sleep(1);
-
-
-
-
 
 
 
