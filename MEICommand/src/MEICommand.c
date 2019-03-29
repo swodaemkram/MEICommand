@@ -132,6 +132,13 @@ Figure out what the command byte should be
 			printf("\nThis Feature not Implemented Yet...\n");
 			exit(0);
 	}
+
+
+if (pkt_command == 0) {
+	print_help();
+}
+
+
 /*
 =====================================================================================
 Finished getting the command Byte
