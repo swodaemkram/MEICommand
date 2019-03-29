@@ -135,6 +135,7 @@ Figure out what the command byte should be
 
 
 if (pkt_command == 0) {
+	printf("\nCommand line variable error ! ...\n");
 	print_help();
 }
 
