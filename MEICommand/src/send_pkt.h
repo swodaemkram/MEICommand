@@ -92,18 +92,21 @@ do {
        //DISPLAY_STRING
        int i = 0;
        while(i <= rdlen){
-       //printf("%d",buf[i]);
+       //printf("%d",buf[i]); //Debug Code
        if (buf[i] == '\x03'){ //Look for the End of Transmission Character and stop
-    	   printf("\nMEI Returned --->%s\n\n",output);
+
+    	   output[q] = '\0';
+    	   printf("\nMEI Returned ---> %s\n\n",output);
     	   return;
        }
+       	   	   	   	    if (buf[i] >= 48 && buf[i] <= 122 && buf[i] != 96){ //Block as many non-printable characters as we can
+       	   	   	   	    output[q] = buf[i];
+           	   		    //printf("%d\n",output[q]); //Debug Code
+                        q++;
 
-        if (buf[i] >= 48 && buf[i] <= 122 ){ //Block as many non-printable characters as we can
-       	   	   	   	   output[q] = buf[i];
-           	   		   //printf("%d\n",output[q]);
-           	   		   q++;
-       }
-       i++;
+       	   	   	   	    }
+
+       	  i++;
        }
 
        //printf("%s",  buf);

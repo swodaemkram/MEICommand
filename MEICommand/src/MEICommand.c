@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
+#include <ctype.h>
 
 #include "ack_message_send.h"
 #include "print_help.h"
