@@ -25,6 +25,8 @@
 #include "build_packet.h"
 #include "send_pkt.h"
 #include "ack_packet_build.h"
+#include "build_packet_cmd.h"
+
 
 int main(int argc, char *argv[]) {
 
@@ -92,10 +94,18 @@ Figure out what the command byte should be
 			printf("\nThis Feature not Implemented Yet...\n");
 			exit(0);
 	}
+/*
+===============================================================================================
+        End of Auxiliary Commands
+================================================================================================
+		Start of Commands
+================================================================================================
+*/
 
 	if (strcmp(command,"enable" )== 0 ){
-			printf("\nThis Feature not Implemented Yet...\n");
-			exit(0);
+			pkt_command = MEI_ACCEPTING;
+			//printf("\nThis Feature not Implemented Yet...\n");
+			//exit(0);
 	}
 
 	if (strcmp(command,"disable" )== 0 ){
@@ -139,7 +149,6 @@ if (pkt_command == 0) {
 	print_help();
 }
 
-
 /*
 =====================================================================================
 Finished getting the command Byte
@@ -156,7 +165,15 @@ Lets Build The Packet to be transmitted
 =====================================================================================
  */
  char * pkt;
- pkt = build_packet(pkt_command);
+
+ if ( pkt_command == '\x02'){
+	 pkt = build_packet_cmd(pkt_command);
+ }
+
+ if(pkt_command >= 4){
+   pkt = build_packet(pkt_command);
+ }
+
  //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 /*
 =====================================================================================
@@ -175,7 +192,6 @@ We Need to Build and ACK Packet
 */
  char * ack_pkt;
  ack_pkt = ack_packet_build(pkt_command);
-
  /*
 ======================================================================================
 Finished Building ACK Packet
@@ -183,9 +199,7 @@ Finished Building ACK Packet
 Now lets send it
 ======================================================================================
   */
-
  ack_message_send(comm_port,ack_pkt);
-
 /*
 =====================================================================================
 Finished Sending ACK
