@@ -122,16 +122,18 @@ do {
        buf[rdlen] = 0;
        i = 0;
         //display hex
-        //unsigned char   *p;
-        //printf("Read %d:", rdlen);
-        //for (p = buf; rdlen-- > 0; p++)
-        //    printf(" 0x%x", *p);
-        // printf("\n");
-
+       printf("\033[1;33m"); //Set color to Yellow
+       printf("\n");
+       unsigned char   *p;
+       printf("Read %d:", rdlen);
+       for (p = buf; rdlen-- > 0; p++)
+       printf(" 0x%x", *p);
+       printf("\n");
+       printf("\033[0m"); //Set it back to white
     } else if (rdlen < 0) {
-        printf("Error from read: %d: %s\n", rdlen, strerror(errno));
+       printf("Error from read: %d: %s\n", rdlen, strerror(errno));
     } else {  /* rdlen == 0 */
-        printf("Timeout from read\n");
+       printf("Timeout from read\n");
     }
 
 

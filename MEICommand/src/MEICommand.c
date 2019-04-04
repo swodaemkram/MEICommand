@@ -27,6 +27,8 @@
 #include "ack_packet_build.h"
 #include "build_packet_cmd.h"
 #include "build_packet_reset.h"
+#include "build_packet_ext_cmd.h"
+
 
 int main(int argc, char *argv[]) {
 
@@ -77,9 +79,7 @@ Figure out what the command byte should be
 	}
 
 	if (strcmp(command,"MEI_GETQP" )== 0 ){
-		//pkt_command = MEI_GETQP;
-		printf("\nThis Feature not Implemented Yet...\n");
-		exit(0);
+		pkt_command = MEI_GETQP;
 	}
 
 	if (strcmp(command,"MEI_GETPERF" )== 0 ){
@@ -91,8 +91,7 @@ Figure out what the command byte should be
 	}
 
 	if (strcmp(command,"MEI_POLL" )== 0 ){
-			printf("\nThis Feature not Implemented Yet...\n");
-			exit(0);
+		pkt_command = MEI_POLL;
 	}
 /*
 ===============================================================================================
@@ -135,7 +134,8 @@ Figure out what the command byte should be
 	}
 
 	if (strcmp(command,"enablebmk" )== 0 ){
-			printf("\nThis Feature not Implemented Yet...\n");
+		pkt_command = MEI_BOOKMARK;
+			//printf("\nThis Feature not Implemented Yet...\n");
 			exit(0);
 	}
 
@@ -167,16 +167,28 @@ Lets Build The Packet to be transmitted
  */
  char * pkt;
 
- if ( pkt_command == '\x02'){
+ if ( pkt_command == '\x02'){				//MEI_ACCEPTING Command
 	 pkt = build_packet_cmd(pkt_command);
  }
 
- if(pkt_command == '\x7f'){
+ if(pkt_command == '\x7f'){					//MEI_RESET
 	 pkt = build_packet_reset(pkt_command);
  }
 
+if(pkt_command == '\x10'){					//MEI_POLL
+	pkt = build_packet_cmd(pkt_command);
+}
 
- if(pkt_command >= 4 && pkt_command != '\x7f'){
+if(pkt_command == '\x0d'){					//MEI_BOOKMARK
+	pkt = build_packet_ext_cmd(pkt_command);
+}
+
+
+
+
+//All other MEI_GET commands
+
+if(pkt_command >= 4 && pkt_command != '\x7f'){
    pkt = build_packet(pkt_command);
  }
 
