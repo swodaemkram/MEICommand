@@ -26,7 +26,7 @@
 #include "send_pkt.h"
 #include "ack_packet_build.h"
 #include "build_packet_cmd.h"
-
+#include "build_packet_reset.h"
 
 int main(int argc, char *argv[]) {
 
@@ -114,8 +114,9 @@ Figure out what the command byte should be
 	}
 
 	if (strcmp(command,"reset" )== 0 ){
-			printf("\nThis Feature not Implemented Yet...\n");
-			exit(0);
+			pkt_command = MEI_RESET;
+			//printf("\nThis Feature not Implemented Yet...\n");
+			//exit(0);
 	}
 
 	if (strcmp(command,"accept" )== 0 ){
@@ -170,9 +171,17 @@ Lets Build The Packet to be transmitted
 	 pkt = build_packet_cmd(pkt_command);
  }
 
- if(pkt_command >= 4){
+ if(pkt_command == '\x7f'){
+	 pkt = build_packet_reset(pkt_command);
+ }
+
+
+ if(pkt_command >= 4 && pkt_command != '\x7f'){
    pkt = build_packet(pkt_command);
  }
+
+
+
 
  //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 /*
@@ -182,8 +191,8 @@ Finished Building Packet
 Send Packet to MEI unit
 =====================================================================================
  */
- send_pkt(comm_port,pkt); //send the bloody packet
-/*
+ send_pkt(comm_port,pkt,pkt_command); //send the bloody packet
+ /*
 =====================================================================================
 Packet Sent now we need to ACK the packet
 =====================================================================================

@@ -11,7 +11,7 @@
 
 
 #endif /* SEND_PKT_H_ */
- void send_pkt (char *comm_port,char *pkt){
+ void send_pkt (char *comm_port,char *pkt, unsigned int pkt_command){
 
 		int set_interface_attribs(int fd, int speed)
 		{
@@ -78,6 +78,14 @@ tcdrain(fd);    /* delay for output */
 Receive
 ======================================================================================================================
 */
+
+if(pkt_command == '\x7f'){
+	 printf("\nRESET normally gets no response from the MEI ....\n");
+	 exit(0);
+ }
+
+
+
 
 char output[80];
 int q = 0;
