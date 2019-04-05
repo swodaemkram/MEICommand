@@ -55,7 +55,8 @@ if incorrect show them the help file
 ====================================================================================
 Finished Parsing Command Line Arguments
 ====================================================================================
-Figure out what the command byte should be
+Figure out what the command byte should be (this is C so no switch statement with string
+compare so we have to do if statements !)
 ====================================================================================
 */
 	if (strcmp(command,"MEI_GETMODEL" )== 0 ){
@@ -98,6 +99,8 @@ Figure out what the command byte should be
         End of Auxiliary Commands
 ================================================================================================
 		Start of Commands
+(this is C so no switch statement with string
+compare so we have to do if statements !)
 ================================================================================================
 */
 
