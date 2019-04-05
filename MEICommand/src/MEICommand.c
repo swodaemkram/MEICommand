@@ -94,6 +94,12 @@ compare so we have to do if statements !)
 	if (strcmp(command,"MEI_POLL" )== 0 ){
 		pkt_command = MEI_POLL;
 	}
+
+	if (strcmp(command,"MEI_GETBILLS")== 0){
+		pkt_command = '\xa2';
+	}
+
+
 /*
 ===============================================================================================
         End of Auxiliary Commands
@@ -105,9 +111,8 @@ compare so we have to do if statements !)
 */
 
 	if (strcmp(command,"enable" )== 0 ){
-			pkt_command = MEI_ACCEPTING;
-			//printf("\nThis Feature not Implemented Yet...\n");
-			//exit(0);
+			pkt_command = MEI_RETRIEVE;
+
 	}
 
 	if (strcmp(command,"disable" )== 0 ){
@@ -117,8 +122,7 @@ compare so we have to do if statements !)
 
 	if (strcmp(command,"reset" )== 0 ){
 			pkt_command = MEI_RESET;
-			//printf("\nThis Feature not Implemented Yet...\n");
-			//exit(0);
+
 	}
 
 	if (strcmp(command,"accept" )== 0 ){
@@ -186,8 +190,14 @@ if(pkt_command == '\x0d'){					//MEI_BOOKMARK
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
+if (pkt_command == '\xa2'){					//MEI_GETBILLS
+	pkt_command = '\x02';
+	pkt = build_packet_ext_cmd(pkt_command);
+}
 
-
+if (pkt_command == '\x0b'){					//MEI_RETRIEVE
+	pkt = build_packet_ext_cmd(pkt_command);
+}
 
 //All other MEI_GET commands
 

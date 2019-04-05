@@ -31,7 +31,7 @@
 	           i++;
 	        }
 	        //printf("%d\n",buffer_len);
-//printf("the check sum = %02x\n",sum);
+            //printf("the check sum = %02x\n",sum);
 
 	 return(sum);
 }

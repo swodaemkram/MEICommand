@@ -57,6 +57,7 @@ void print_help(){
     printf(" MEI_GETQP\n");
     printf(" MEI_GETPERF\n");
     printf(" MEI_GETBNF\n");
+    printf(" MEI_GETBILLS\n");
     printf("\033[0m"); //Set it back to white
     printf("\n");
 	printf(" [Usage]: MEICommand {port} {command}\n");
