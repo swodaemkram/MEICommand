@@ -224,8 +224,8 @@ Packet Sent now we need to ACK the packet
 We Need to Build and ACK Packet
 =====================================================================================
 */
- char * ack_pkt;
- ack_pkt = ack_packet_build(pkt_command);
+ //char * ack_pkt;
+ //ack_pkt = ack_packet_build(pkt_command);
  /*
 ======================================================================================
 Finished Building ACK Packet
@@ -233,8 +233,11 @@ Finished Building ACK Packet
 Now lets send it
 ======================================================================================
   */
- ack_message_send(comm_port,ack_pkt);
-/*
+// ack_message_send(comm_port,ack_pkt);
+
+ack_message_send(comm_port,pkt);
+
+ /*
 =====================================================================================
 Finished Sending ACK
 =====================================================================================
