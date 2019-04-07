@@ -12,6 +12,7 @@
 
 int main(int argc, char *argv[]) {
 
+//system("clear"); //Clear the screen
 //char pkt_command[1];
 unsigned int pkt_command = 0;
 char comm_port[250] = {0}; //Define comm port variable
@@ -79,7 +80,17 @@ compare so we have to do if statements !)
 		pkt_command = '\xa2';
 	}
 
+	if (strcmp(command,"MEI_STACK") == 0){
+		pkt_command = '\x30';
+	}
 
+	if (strcmp(command,"MEI_RETURN")== 0 ){
+		pkt_command = '\x50';
+	}
+
+	if (strcmp(command,"MEI_RETRIEVE") == 0){
+		pkt_command = MEI_RETRIEVE;
+	}
 /*
 ===============================================================================================
         End of Auxiliary Commands
@@ -90,10 +101,10 @@ compare so we have to do if statements !)
 ================================================================================================
 */
 
-	if (strcmp(command,"enable" )== 0 ){
-			pkt_command = MEI_RETRIEVE;
+	//if (strcmp(command,"enable" )== 0 ){
+	//		pkt_command = MEI_RETRIEVE;
 
-	}
+	//}
 
 	if (strcmp(command,"disable" )== 0 ){
 			printf("\nThis Feature not Implemented Yet...\n");
@@ -144,7 +155,7 @@ Finished getting the command Byte
 Setup Serial Port
 =====================================================================================
 */
-	setup_serial_port(comm_port);
+//	setup_serial_port(comm_port);
 /*
 =====================================================================================
 Serial Port is Setup
@@ -154,38 +165,37 @@ Lets Build The Packet to be transmitted
  */
  char * pkt;
 
- if ( pkt_command == '\x02'){				//MEI_ACCEPTING Command
+ if ( pkt_command == MEI_ACCEPTING) {			   //MEI_ACCEPTING Command
 	 pkt = build_packet_cmd(pkt_command);
  }
 
- if(pkt_command == '\x7f'){					//MEI_RESET
+ if(pkt_command == MEI_RESET){					   //MEI_RESET
 	 pkt = build_packet_reset(pkt_command);
  }
 
-if(pkt_command == '\x10'){					//MEI_POLL
+if(pkt_command == MEI_POLL){					    //MEI_POLL
 	pkt = build_packet_cmd(pkt_command);
 }
 
-if(pkt_command == '\x0d'){					//MEI_BOOKMARK
+if(pkt_command == MEI_BOOKMARK){					//MEI_BOOKMARK
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
-if (pkt_command == '\xa2'){					//MEI_GETBILLS
-	pkt_command = '\x02';
+if (pkt_command == '\xa2'){					       //MEI_GETBILLS
+	pkt_command = MEI_GETBILLS;
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
-if (pkt_command == '\x0b'){					//MEI_RETRIEVE
+if (pkt_command == MEI_RETRIEVE){					//MEI_RETRIEVE
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
 //All other MEI_GET commands
 
-if(pkt_command >= 4 && pkt_command != '\x7f'){
+if(pkt_command >= 4 && pkt_command != MEI_RESET){
    pkt = build_packet(pkt_command);
  }
 
- //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 /*
 =====================================================================================
 Finished Building Packet
