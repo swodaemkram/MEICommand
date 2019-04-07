@@ -203,7 +203,7 @@ if (pkt_command == '\x0b'){					//MEI_RETRIEVE
 
 if(pkt_command >= 4 && pkt_command != '\x7f'){
    pkt = build_packet(pkt_command);
- }
+ }https://github.com/swodaemkram/MEICommand
 
 
 
