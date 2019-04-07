@@ -74,16 +74,15 @@ void ack_message_send(char *comm_port,char *pkt){
 	======================================================================================================================
 	*/
 
-	pkt[2] = '\x01';
-
-	//printf("\npkt size = %d\n",sizeof(pkt));
-
-
-
-
-
-
+	pkt[2] = '\x01'; //ACK NUMBER
+	unsigned int crc_val;
+	int pkt_length = 0;
+	pkt_length = sizeof(pkt);                      //How long is the packet
+	crc_val = do_crc(pkt, pkt_length);             //Lets get crc of the packet
+	pkt[ pkt_length - 1] = crc_val;                 //Tac on crc to the end of the packet
+	//printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
     write(fd,pkt,sizeof(pkt));
 	tcdrain(fd);    /* delay for output */
 	return;
+
 }
