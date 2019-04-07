@@ -10,7 +10,7 @@
 
 
 
-#endif /* SEND_PKT_H_ */
+
  void send_pkt (char *comm_port,char *pkt, unsigned int pkt_command){
 
 		int set_interface_attribs(int fd, int speed)
@@ -142,4 +142,6 @@ do {
 return;
 
  }
+
+#endif /* SEND_PKT_H_ */
 

@@ -10,7 +10,7 @@
 
 
 
-#endif /* ACK_PACKET_BUILD_H_ */
+
 
 char * ack_packet_build(unsigned int pkt_command){
 
@@ -24,3 +24,5 @@ char * ack_packet_build(unsigned int pkt_command){
 		return ack_pkt;                     //send the packet to be transmitted
 
 }
+
+#endif /* ACK_PACKET_BUILD_H_ */

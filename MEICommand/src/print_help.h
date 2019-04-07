@@ -10,10 +10,6 @@
 
 
 
-#endif /* PRINT_HELP_H_ */
-
-
-
 
 void print_help(){
 
@@ -65,3 +61,5 @@ void print_help(){
 	printf(" [Example]: MEICommand /dev/ttyUSB0 MEI_GETSERIAL\n\n");
 	exit(1);
 }
+
+#endif /* PRINT_HELP_H_ */

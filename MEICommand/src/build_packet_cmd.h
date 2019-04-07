@@ -10,7 +10,7 @@
 
 
 
-#endif /* BUILD_PACKET_CMD_H_ */
+
 
 char *build_packet_cmd(unsigned int pkt_command){
 
@@ -25,3 +25,4 @@ char *build_packet_cmd(unsigned int pkt_command){
 
 	return pkt;
 }
+#endif /* BUILD_PACKET_CMD_H_ */

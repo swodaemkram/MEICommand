@@ -10,7 +10,7 @@
 
 
 
-#endif /* SETUP_SERIAL_PORT_H_ */
+
 void setup_serial_port(char *comm_port){
 
 
@@ -73,3 +73,4 @@ void setup_serial_port(char *comm_port){
 	return;
 }
 
+#endif /* SETUP_SERIAL_PORT_H_ */

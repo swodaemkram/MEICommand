@@ -10,7 +10,7 @@
 
 
 
-#endif /* BUILD_PACKET_RESET_H_ */
+
 
 char *build_packet_reset(unsigned int pkt_command)
 {
@@ -28,3 +28,4 @@ char *build_packet_reset(unsigned int pkt_command)
 
 
 }
+#endif /* BUILD_PACKET_RESET_H_ */

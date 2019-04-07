@@ -8,7 +8,7 @@
 #ifndef BUILD_PACKET_H_
 #define BUILD_PACKET_H_
 
-#endif /* BUILD_PACKET_H_ */
+
 
 char * build_packet(unsigned int pkt_command){
 
@@ -21,3 +21,4 @@ char * build_packet(unsigned int pkt_command){
 	//printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 	return pkt;                     //send the packet to be transmitted
 }
+#endif /* BUILD_PACKET_H_ */

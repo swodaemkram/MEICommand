@@ -10,7 +10,7 @@
 
 
 
-#endif /* MEI_CONSTANTS_H_ */
+
 
 /* baudrate settings are defined in <asm/termbits.h>, which is
 included by <termios.h> */
@@ -63,3 +63,5 @@ unsigned int	MEI_EXT       =  0x70;
 int	MEI_GETBILLS  =  0x02;
 int	MEI_RETRIEVE  =  0x0B;
 int	MEI_BOOKMARK  =  0x0D;
+
+#endif /* MEI_CONSTANTS_H_ */

@@ -10,7 +10,7 @@
 
 
 
-#endif /* BUILD_PACKET_EXT_CMD_H_ */
+
 
 char *build_packet_ext_cmd(unsigned int pkt_command){
 
@@ -29,3 +29,4 @@ return pkt;
 
 
 }
+#endif /* BUILD_PACKET_EXT_CMD_H_ */

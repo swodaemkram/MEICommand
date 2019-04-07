@@ -10,7 +10,7 @@
 #ifndef DO_CRC_H_
 #define DO_CRC_H_
 
-#endif /* DO_CRC_H_ */
+
  int do_crc(char buff[], int buffer_len){
 
 	 //printf("\n%02x%02x%02x%02x%02x%02x\n",buff[0],buff[1],buff[2],buff[3],buff[4],buff[5]);
@@ -35,3 +35,5 @@
 
 	 return(sum);
 }
+
+#endif /* DO_CRC_H_ */
