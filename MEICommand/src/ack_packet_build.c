@@ -1,14 +1,9 @@
 /*
- * ack_packet_build.h
+ * ack_packet_build.c
  *
- *  Created on: Mar 28, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
-#ifndef ACK_PACKET_BUILD_H_
-#define ACK_PACKET_BUILD_H_
-
-
 
 
 
@@ -24,5 +19,3 @@ char * ack_packet_build(unsigned int pkt_command){
 		return ack_pkt;                     //send the packet to be transmitted
 
 }
-
-#endif /* ACK_PACKET_BUILD_H_ */

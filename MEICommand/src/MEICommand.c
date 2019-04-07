@@ -8,27 +8,7 @@
  ============================================================================
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <termios.h>
-#include <unistd.h>
-#include <ctype.h>
-
-#include "ack_message_send.h"
-#include "print_help.h"
-#include "mei_Constants.h"
-#include "do_crc.h"
-#include "setup_serial_port.h"
-#include "build_packet.h"
-#include "send_pkt.h"
-#include "ack_packet_build.h"
-#include "build_packet_cmd.h"
-#include "build_packet_reset.h"
-#include "build_packet_ext_cmd.h"
-
+#include "mei_header.h"
 
 int main(int argc, char *argv[]) {
 
@@ -203,10 +183,7 @@ if (pkt_command == '\x0b'){					//MEI_RETRIEVE
 
 if(pkt_command >= 4 && pkt_command != '\x7f'){
    pkt = build_packet(pkt_command);
- }https://github.com/swodaemkram/MEICommand
-
-
-
+ }
 
  //printf("This is the string I'm sending --> %02x%02x%02x%02x%02x%02x%02x%02x\n\n",pkt[0],pkt[1],pkt[2],pkt[3],pkt[4],pkt[5],pkt[6],pkt[7]);
 /*

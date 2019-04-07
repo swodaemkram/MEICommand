@@ -1,17 +1,19 @@
 /*
- * send_pkt.h
+ * send_pkt.c
  *
- *  Created on: Mar 28, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
-#ifndef SEND_PKT_H_
-#define SEND_PKT_H_
 
-
-
-
- void send_pkt (char *comm_port,char *pkt, unsigned int pkt_command){
+void send_pkt (char *comm_port,char *pkt, unsigned int pkt_command){
 
 		int set_interface_attribs(int fd, int speed)
 		{
@@ -142,6 +144,4 @@ do {
 return;
 
  }
-
-#endif /* SEND_PKT_H_ */
 

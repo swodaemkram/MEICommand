@@ -1,14 +1,9 @@
 /*
- * print_help.h
+ * print_help.c
  *
- *  Created on: Mar 27, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
-#ifndef PRINT_HELP_H_
-#define PRINT_HELP_H_
-
-
 
 
 void print_help(){
@@ -61,5 +56,3 @@ void print_help(){
 	printf(" [Example]: MEICommand /dev/ttyUSB0 MEI_GETSERIAL\n\n");
 	exit(1);
 }
-
-#endif /* PRINT_HELP_H_ */

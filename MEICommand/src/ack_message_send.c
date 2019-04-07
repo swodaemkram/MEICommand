@@ -4,15 +4,14 @@
  *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
-#include <fcntl.h>
 #include <termios.h>
 #include <unistd.h>
-#include <ctype.h>
+
 
 void ack_message_send(char *comm_port,char *pkt){
 
@@ -77,7 +76,7 @@ void ack_message_send(char *comm_port,char *pkt){
 
 	pkt[2] = '\x01';
 
-	printf("\npkt size = %d\n",sizeof(pkt));
+	//printf("\npkt size = %d\n",sizeof(pkt));
 
 
 

@@ -1,15 +1,9 @@
 /*
- * build_packet_reset.h
+ * build_packet_reset.c
  *
- *  Created on: Apr 1, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
-#ifndef BUILD_PACKET_RESET_H_
-#define BUILD_PACKET_RESET_H_
-
-
-
 
 
 char *build_packet_reset(unsigned int pkt_command)
@@ -28,4 +22,3 @@ char *build_packet_reset(unsigned int pkt_command)
 
 
 }
-#endif /* BUILD_PACKET_RESET_H_ */

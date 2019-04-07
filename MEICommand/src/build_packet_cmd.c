@@ -1,14 +1,9 @@
 /*
- * build_packet_cmd.h
+ * build_packet_cmd.c
  *
- *  Created on: Mar 29, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
-#ifndef BUILD_PACKET_CMD_H_
-#define BUILD_PACKET_CMD_H_
-
-
 
 
 
@@ -25,4 +20,3 @@ char *build_packet_cmd(unsigned int pkt_command){
 
 	return pkt;
 }
-#endif /* BUILD_PACKET_CMD_H_ */

@@ -1,18 +1,11 @@
-/*
- * build_packet_ext_cmd.h
- *
- *  Created on: Apr 4, 2019
- *      Author: mark
- */
-
-#ifndef BUILD_PACKET_EXT_CMD_H_
-#define BUILD_PACKET_EXT_CMD_H_
-
-
-
 
 
 char *build_packet_ext_cmd(unsigned int pkt_command){
+
+
+
+
+
 
 	static char pkt[30] = "\x02\x10\x70\x00\x00\x10\x10\x01\x03"; //packet Skeleton
 
@@ -29,4 +22,3 @@ return pkt;
 
 
 }
-#endif /* BUILD_PACKET_EXT_CMD_H_ */

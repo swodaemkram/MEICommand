@@ -5,10 +5,18 @@
  *      Author: mark
  */
 
-#ifndef MEI_CONSTANTS_H_
-#define MEI_CONSTANTS_H_
+#ifndef MEI_HEADER_H_
+#define MEI_HEADER_H_
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <termios.h>
+#include <unistd.h>
+#include <ctype.h>
 
 
 
@@ -64,4 +72,17 @@ int	MEI_GETBILLS  =  0x02;
 int	MEI_RETRIEVE  =  0x0B;
 int	MEI_BOOKMARK  =  0x0D;
 
-#endif /* MEI_CONSTANTS_H_ */
+void ack_message_send(char *comm_port,char *pkt);
+char * ack_packet_build(unsigned int pkt_command);
+char *build_packet_cmd(unsigned int pkt_command);
+char *build_packet_ext_cmd(unsigned int pkt_command);
+char *build_packet_reset(unsigned int pkt_command);
+char * build_packet(unsigned int pkt_command);
+void print_help();
+void send_pkt (char *comm_port,char *pkt, unsigned int pkt_command);
+void setup_serial_port(char *comm_port);
+int do_crc(char buff[], int buffer_len);
+
+
+
+#endif /* MEI_HEADER_H_ */

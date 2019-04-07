@@ -1,15 +1,16 @@
 /*
- * Setup_Serial_Port.h
+ * setup_serial_port.c
  *
- *  Created on: Mar 27, 2019
+ *  Created on: Apr 7, 2019
  *      Author: mark
  */
-
-#ifndef SETUP_SERIAL_PORT_H_
-#define SETUP_SERIAL_PORT_H_
-
-
-
+#include <errno.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 void setup_serial_port(char *comm_port){
 
@@ -72,5 +73,3 @@ void setup_serial_port(char *comm_port){
 
 	return;
 }
-
-#endif /* SETUP_SERIAL_PORT_H_ */
