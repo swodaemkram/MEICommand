@@ -38,6 +38,9 @@ void print_help(){
     printf(" MEI_GETBNF\n");
     printf(" MEI_GETBILLS\n");
     printf(" MEI_RETRIEVE\n");
+    printf(" MEI_RESET\n");
+    printf(" MEI_Number_Of_Resets\n");
+
     printf("\033[1;34m"); //Set color to Cyan
     printf("===========================================================================\n");
     printf("\033[0m"); //Set it back to white

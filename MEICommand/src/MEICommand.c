@@ -77,20 +77,29 @@ compare so we have to do if statements !)
 	}
 
 	if (strcmp(command,"MEI_GETBILLS")== 0){
-		pkt_command = '\xa2';
+		pkt_command = MEI_GETBILLS;
 	}
 
 	if (strcmp(command,"MEI_STACK") == 0){
-		pkt_command = '\x30';
+		pkt_command = MEI_STACK;
 	}
 
 	if (strcmp(command,"MEI_RETURN")== 0 ){
-		pkt_command = '\x50';
+		pkt_command = MEI_RETURN;
 	}
 
 	if (strcmp(command,"MEI_RETRIEVE") == 0){
 		pkt_command = MEI_RETRIEVE;
 	}
+
+	if (strcmp(command, "MEI_Number_Of_Resets") == 0){
+		pkt_command = '\xb2';
+	}
+
+
+
+
+
 /*
 ===============================================================================================
         End of Auxiliary Commands
@@ -111,7 +120,7 @@ compare so we have to do if statements !)
 			exit(0);
 	}
 
-	if (strcmp(command,"reset" )== 0 ){
+	if (strcmp(command,"MEI_RESET" )== 0 ){
 			pkt_command = MEI_RESET;
 
 	}
@@ -181,7 +190,7 @@ if(pkt_command == MEI_BOOKMARK){					//MEI_BOOKMARK
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
-if (pkt_command == '\xa2'){					       //MEI_GETBILLS
+if (pkt_command == MEI_GETBILLS){					       //MEI_GETBILLS
 	pkt_command = MEI_GETBILLS;
 	pkt = build_packet_ext_cmd(pkt_command);
 }
@@ -190,11 +199,20 @@ if (pkt_command == MEI_RETRIEVE){					//MEI_RETRIEVE
 	pkt = build_packet_ext_cmd(pkt_command);
 }
 
+if(pkt_command == '\xb2'){
+	pkt_command = '\x02';
+	pkt = build_packet(pkt_command);
+}
+
+
 //All other MEI_GET commands
 
 if(pkt_command >= 4 && pkt_command != MEI_RESET){
    pkt = build_packet(pkt_command);
  }
+
+
+
 
 /*
 =====================================================================================
